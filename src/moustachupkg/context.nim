@@ -1,6 +1,7 @@
 import json
 import sequtils
 import strutils
+import tables
 
 
 type
@@ -33,7 +34,7 @@ proc newContext*(j : JsonNode = nil): Context =
     of JObject:
       result.kind = CObject
       result.fields = @[]
-      for key, val in items(j.fields):
+      for key, val in pairs(j.fields):
         result.fields.add((key, newContext(val)))
     of JArray:
       result.kind = CArray

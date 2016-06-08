@@ -66,8 +66,8 @@ proc ignore(tag: string, tokens: seq[Token], index: int): int =
 proc parallelReplace(str: string,
                      substitutions: openArray[tuple[pattern: string, by: string]]): string =
   ## Returns a modified copy of `str` with the `substitutions` applied
-  var result = str
-  for sub in subsitutions:
+  result = str
+  for sub in substitutions:
     result = result.replace(sub[0], sub[1])
 
 proc render(tmplate: string, contextStack: seq[Context]): string =
